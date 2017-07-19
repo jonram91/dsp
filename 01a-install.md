@@ -48,14 +48,13 @@ cross-platform.
 
 Did you install Python 2 or 3? Why?  
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+I installed both and created kernels for Python 2 and 3 so that I could do the majority of the work for Metis. I kept Python 2 in case I encountered any code/solutions written with Python 2 conventions.
 
 ### Q2. Which Python Version Installed   
 
 How can you check the version of Python installed if you happen to be on an unfamiliar computer?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
-
+Type in "python --version" in the terminal.
  
 
 
