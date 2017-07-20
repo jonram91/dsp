@@ -88,10 +88,9 @@ and has higher functionality.
 ### Q3. Graphical Editor
 
 What graphical editor will you use? How did you make your decision? What are some interesting features of your editor? What are some useful keyboard shortcuts for your editor? How do you customize your editor?
+___
 
-```
-
-I will use Spyder because I can use different versions of Python with it. Some interesting features are that
+I will use <b>Spyder</b> because I can use different versions of Python with it. Some interesting features are that
 it displays a list of all variables created listing their values, you can run chunks of code and see the output
 in the iPython console, and there is a debugger to help isolate any pieces of code that are causing problems.
 
@@ -104,4 +103,6 @@ Some useful shortcuts are:
 You can customize the IDE in the preferences menu. I've customized just the color scheme for now as a
 darker theme for the text editor is a bit easier on the eyes.
 
-```
+'''
+
+'''
