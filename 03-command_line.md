@@ -60,7 +60,7 @@ Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) 
 ### Q4.  Xargs   
 
 What does `xargs` do? Give an example of how to use it.
-__
+___
 
 xargs repeats an operation on a list of files or, more generally speaking, a collection of multiple items.
 
