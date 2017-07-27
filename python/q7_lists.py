@@ -15,7 +15,13 @@ def match_ends(words):
     >>> match_ends(['aaa', 'be', 'abc', 'hello'])
     1
     """
-    raise NotImplementedError
+    count = 0
+    
+    for s in words:
+        if len(s) > 1 and s[0] == s[len(s)-1]:
+            count += 1
+    
+    return count
 
 
 def front_x(words):
@@ -32,7 +38,20 @@ def front_x(words):
     >>> front_x(['mix', 'xyz', 'apple', 'xanadu', 'aardvark'])
     ['xanadu', 'xyz', 'aardvark', 'apple', 'mix']
     """
-    raise NotImplementedError
+    x_words = []
+    
+    non_x_words = []
+    
+    for word in words:
+        if word[0] == 'x':
+            x_words.append(word)
+        else:
+            non_x_words.append(word)
+            
+    sorted_list = sorted(x_words) + sorted(non_x_words)
+    
+    return sorted_list
+
 
 
 def sort_last(tuples):
@@ -49,7 +68,24 @@ def sort_last(tuples):
     >>> sort_last([(1, 7), (1, 3), (3, 4, 5), (2, 2)])
     [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
     """
-    raise NotImplementedError
+    last_digits = []
+    
+    result = []
+    
+    for tup in tuples:
+        last_digits.append(tup[len(tup)-1])
+        
+    last_digits_sorted = sorted(last_digits)
+    
+    last_digit_indeces = [last_digits.index(i) for i in last_digits_sorted]
+
+    
+    for i in last_digit_indeces:
+        result.append(tuples[i])
+    
+    
+    return result
+
 
 
 def remove_adjacent(nums):
@@ -68,7 +104,23 @@ def remove_adjacent(nums):
     >>> remove_adjacent([])
     []
     """
-    raise NotImplementedError
+    delete = [False]
+    
+    result = []
+    
+    for i in range(1, len(nums)):
+        if nums[i] == nums[i-1]:
+            delete.append(True)
+        else:
+            delete.append(False)
+        
+    for i in range(len(nums)):
+        
+        if delete[i] == False:
+            result.append(nums[i])
+    
+    return result
+
 
 
 def linear_merge(list1, list2):
@@ -85,4 +137,4 @@ def linear_merge(list1, list2):
     >>> linear_merge(['aa', 'aa'], ['aa', 'bb', 'bb'])
     ['aa', 'aa', 'aa', 'bb', 'bb']
     """
-    raise NotImplementedError
+    return(sorted(list1+list2))
