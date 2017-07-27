@@ -48,7 +48,7 @@ Describe Python's `lambda`. What is it, and what is it used for? Give at least o
 
 A lambda is an anonymized/unnamed function. It is used for applying a single function all members of a collection.
 
-'''Python
+```python
 #This lambda will sort the list according to whether each digit is even or odd.
 
 list1 = [3,14,7,10,11,6,15]
@@ -56,7 +56,7 @@ list1 = [3,14,7,10,11,6,15]
 sorted(list1, key = lambda x: x%2 == 0)
 
 Out[15]: [3, 7, 11, 15, 14, 10, 6]
-'''
+```
 
 ---
 
