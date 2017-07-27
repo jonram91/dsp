@@ -21,7 +21,26 @@ football.head()
 
 print(str(football[football['net_goals'] == football['net_goals'].min()]))
 
+'''
+>>          Team  Games  Wins  Losses  Draws  Goals  Goals Allowed  Points  \
+19  Leicester     38     5      13     20     30             64      28   
+
+    net_goals  
+19        -34  
+'''
+
+
 #Aston_Villa has the smallest absolute difference between goals scored and allowed
 #There were 46 goals scored vs 47 goals allowed
 
 football.ix[abs(football['net_goals']) == 1]
+
+'''
+
+>>           Team  Games  Wins  Losses  Draws  Goals  Goals Allowed  Points  \
+7  Aston_Villa     38    12      14     12     46             47      50   
+
+   net_goals  
+7         -1
+
+'''
