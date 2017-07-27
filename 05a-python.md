@@ -28,12 +28,12 @@ Differences:
 How are Python lists and sets similar and different? Give examples of using both. How does performance compare between lists and sets for finding an element. Why?
 
 Similarities:
-*Lists and sets are iterable
-*Lists and sets are searchable
+* Lists and sets are iterable
+* Lists and sets are searchable
 
 Differences:
-*Lists are mutable and sets are immutable
-*Lists can contain duplicates of entries
+* Lists are mutable and sets are immutable
+* Lists can contain duplicates of entries
 
 Sets perform faster when searching for a specific element because when a set is created,
 a hash table is populated through a hash function. This means that when searching for
