@@ -18,8 +18,17 @@ def donuts(count):
     >>> donuts(99)
     'Number of donuts: many'
     """
-    raise NotImplementedError
-
+    
+        
+    if count > 9:
+    
+        return ("Number of donuts: many")
+    
+    else:
+        
+        return ("Number of donuts: " + str(count))
+    
+    
 
 def both_ends(s):
     """
@@ -37,7 +46,14 @@ def both_ends(s):
     >>> both_ends('xyz')
     'xyyz'
     """
-    raise NotImplementedError
+    
+    if len(s) < 2:
+        return ''
+    
+    else:
+        
+        return s[0:3] + s[len(s)-1:len(s)+1]
+
 
 
 def fix_start(s):
@@ -56,7 +72,7 @@ def fix_start(s):
     >>> fix_start('donut')
     'donut'
     """
-    raise NotImplementedError
+    return s[0] + s[1:len(s)].replace(s[0], '*')
 
 
 def mix_up(a, b):
@@ -74,7 +90,7 @@ def mix_up(a, b):
     >>> mix_up('pezzy', 'firm')
     'fizzy perm'
     """
-    raise NotImplementedError
+    return (b[0:2]+a[2:len(a)] + " " + a[0:2] + b[2:len(b)])
 
 
 def verbing(s):
@@ -91,8 +107,19 @@ def verbing(s):
     >>> verbing('do')
     'do'
     """
-    raise NotImplementedError
-
+    if len(s) > 2:
+        
+        if s[len(s)-3:len(s)] == "ing":
+        
+            return s+"ly"
+    
+        else:
+            
+            return s+"ing"
+    else:
+        
+        return s
+    
 
 def not_bad(s):
     """
@@ -111,7 +138,13 @@ def not_bad(s):
     >>> not_bad("It's bad yet not")
     "It's bad yet not"
     """
-    raise NotImplementedError
+    not_index = s.find('not')
+    bad_index = s.find('bad')
+    
+    if bad_index > not_index:
+        s = s.replace(s[not_index:bad_index+3], 'good')
+    
+    return s
 
 
 def front_back(a, b):
@@ -130,4 +163,38 @@ def front_back(a, b):
     >>> front_back('Kitten', 'Donut')
     'KitDontenut'
     """
-    raise NotImplementedError
+    import numpy as np
+
+    if len(a) == 2:
+        a_halfpoint = 1
+    
+    else:
+        
+        a_halfpoint = int(np.ceil(len(a)/2))
+    
+    if len(b) == 2:
+        b_halfpoint = 1
+    
+    else:
+        
+        b_halfpoint = int(np.ceil(len(b)/2))
+    
+    a_half_1 = a[0:a_halfpoint]
+    a_half_2 = a[a_halfpoint:len(a)]
+    
+    b_half_1 = b[0:b_halfpoint]
+    b_half_2 = b[b_halfpoint: len(b)]
+    
+    '''
+    
+    print("a_half_1: " + a_half_1)
+    
+    print("b_half_1: " + b_half_1)
+    
+    print("a_half_2: " + a_half_2)
+          
+    print("b_half_2: " + b_half_2)
+    
+    '''
+    
+    return a_half_1 + b_half_1 + a_half_2 + b_half_2
