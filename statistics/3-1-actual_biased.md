@@ -10,4 +10,4 @@ list(resp)
 pmf = thinkstats2.Pmf(resp.numkdhh, label='actual numkdhh')
 ```
 
-![Response_Ch3] (thinkstats/images/PMF%20Actual%20vs%20Biased.png)
+![Response_Ch3](thinkstats/images/PMF%20Actual%20vs%20Biased.png)
