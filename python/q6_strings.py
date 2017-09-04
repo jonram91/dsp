@@ -52,7 +52,7 @@ def both_ends(s):
     
     else:
         
-        return s[0:3] + s[len(s)-1:len(s)+1]
+        return s[0:2] + s[len(s)-2:len(s)+1]
 
 
 
@@ -148,36 +148,21 @@ def not_bad(s):
 
 
 def front_back(a, b):
-    """
-    Consider dividing a string into two halves. If the length is even,
-    the front and back halves are the same length. If the length is
-    odd, we'll say that the extra char goes in the front half. e.g.
-    'abcde', the front half is 'abc', the back half 'de'. Given 2
-    strings, a and b, return a string of the form a-front + b-front +
-    a-back + b-back
+    
 
-    >>> front_back('abcd', 'xy')
-    'abxcdy'
-    >>> front_back('abcde', 'xyz')
-    'abcxydez'
-    >>> front_back('Kitten', 'Donut')
-    'KitDontenut'
-    """
-    import numpy as np
-
-    if len(a) == 2:
-        a_halfpoint = 1
+    if len(a) % 2 == 0:
+        a_halfpoint = int(len(a)/2)
     
     else:
         
-        a_halfpoint = int(np.ceil(len(a)/2))
+        a_halfpoint = int(len(a)/2) + 1
     
-    if len(b) == 2:
-        b_halfpoint = 1
+    if len(b) % 2 == 0:
+        b_halfpoint = int(len(b)/2)
     
     else:
         
-        b_halfpoint = int(np.ceil(len(b)/2))
+        b_halfpoint = int(len(b)/2) + 1
     
     a_half_1 = a[0:a_halfpoint]
     a_half_2 = a[a_halfpoint:len(a)]
