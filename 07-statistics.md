@@ -65,19 +65,104 @@ $ git clone https://github.com/AllenDowney/ThinkStats2.git
 *Include your Python code, results and explanation (where applicable).*
 
 ### Q1. [Think Stats Chapter 2 Exercise 4](statistics/2-4-cohens_d.md) (effect size of Cohen's d)  
-Cohen's D is an example of effect size.  Other examples of effect size are:  correlation between two variables, mean difference, regression coefficients and standardized test statistics such as: t, Z, F, etc. In this example, you will compute Cohen's D to quantify (or measure) the difference between two groups of data.   
 
 You will see effect size again and again in results of algorithms that are run in data science.  For instance, in the bootcamp, when you run a regression analysis, you will recognize the t-statistic as an example of effect size.
+
+When comparing the length of the pregnancy vs. the total weight of the babies, it is apparent that first babies are very slightly lighter than other babies and have slightly longer pregnancies.
+
+
+```python
+CohenEffectSize(firsts.totalwgt_lb, others.totalwgt_lb)
+
+>>> -0.088672927072601743
+
+```
+
+```python
+CohenEffectSize(firsts.prglngth, others.prglngth)
+
+>>>0.028879044654449834
+
+```
+
 
 ### Q2. [Think Stats Chapter 3 Exercise 1](statistics/3-1-actual_biased.md) (actual vs. biased)
 This problem presents a robust example of actual vs biased data.  As a data scientist, it will be important to examine not only the data that is available, but also the data that may be missing but highly relevant.  You will see how the absence of this relevant data will bias a dataset, its distribution, and ultimately, its statistical interpretation.
 
+When simulating the observed number of children under 18 when surveying the children themselves, the distributions are vastly different. Due to this bias, surveying may not necessarily be the best way to determine family size.
+
+```python
+resp = nsfg.ReadFemResp()
+
+list(resp)
+
+pmf = thinkstats2.Pmf(resp.numkdhh, label='actual numkdhh')
+```
+
+![Response_Ch3](thinkstats/images/PMF%20Actual%20vs%20Biased.png)
+
+
 ### Q3. [Think Stats Chapter 4 Exercise 2](statistics/4-2-random_dist.md) (random distribution)  
 This questions asks you to examine the function that produces random numbers.  Is it really random?  A good way to test that is to examine the pmf and cdf of the list of random numbers and visualize the distribution.  If you're not sure what pmf is, read more about it in Chapter 3.  
+
+[Think Stats Chapter 4 Exercise 2](http://greenteapress.com/thinkstats2/html/thinkstats2005.html#toc41) (a random distribution)
+
+Considering the CDF, which is quite close to a straight line, the distribution is indeed uniform.
+
+![Response_Ch4_1](thinkstats/images/cdf-ch4.png)
+
+Furthermore, the PMF shows equal probability for all values in the sample.
+
+![Response_Ch4_2](thinkstats/images/pmf-ch4.png)
+
 
 ### Q4. [Think Stats Chapter 5 Exercise 1](statistics/5-1-blue_men.md) (normal distribution of blue men)
 This is a classic example of hypothesis testing using the normal distribution.  The effect size used here is the Z-statistic. 
 
+If male heights are normally distributed, then you can use scipy's normal distribution function to simulate the US population.
+
+```python
+import scipy
+mu = 178
+sigma = 7.7
+dist = scipy.stats.norm(loc=mu, scale=sigma)
+
+low = 70
+high = 73
+
+```
+
+The heights need to be converted to cm.
+
+```python
+def to_cm(inch):
+    return inch*2.54
+
+low_cm = round(to_cm(low),2)
+high_cm = round(to_cm(high),2)
+cdf_low = round(dist.cdf(low_cm),2)
+cdf_high = round(dist.cdf(high_cm),2)
+
+```
+
+```python
+print("Approximately {}% of men are shorter than {}cm".format(cdf_low*100,low_cm))
+
+>>> Approximately 49.0% of men are shorter than 177.8cm
+
+print("Approximately {}% of men are shorter than {}cm".format(cdf_high*100,high_cm))
+
+>>> Approximately 83.0% of men are shorter than 185.42cm
+
+print("Approximately {}% of men are between 70 inches and 73 inches".format(round(cdf_high-cdf_low,2)*100))
+
+>>>Approximately 34.0% of men are between 70 inches and 73 inches
+
+```
+
+About 34% of men are eligible to join BMG.
+
+I am part of the 66%. :cry:
 
 
 ### Q5. Bayesian (Elvis Presley twin) 
@@ -86,14 +171,94 @@ Bayes' Theorem is an important tool in understanding what we really know, given 
 
 Elvis Presley had a twin brother who died at birth.  What is the probability that Elvis was an identical twin? Assume we observe the following probabilities in the population: fraternal twin is 1/125 and identical twin is 1/300.  
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+```
+In order to best understand Bayes' Theorem, I've decided to take a step-by-step approach to this problem.
+
+To begin, let's consider a sample of 10,000 pairs of siblings.
+
+```
+
+```python
+sample = 10000
+prob_identical = (1/300)
+identical_twins = sample*prob_identical
+
+identical_twins
+
+>>> 33.333333333333336
+
+```
+
+There are about 33 (10,000 * 1/300) pairs of identical twins.
+
+```python
+
+identical_twin_bros = identical_twins/2
+
+identical_twin_bros
+
+>>> 16.666666666666668
+
+```
+
+Of those identical twins, half of them will be twin brothers.
+
+```python
+
+prob_fraternal = (1/125)
+fraternal_twins = sample*prob_fraternal
+fraternal_twins
+
+>>> 80.0
+
+```
+
+There are 80 (10,000 * 1/125) pairs of fraternal twins.
+
+```python
+fraternal_twin_bros = fraternal_twins/4
+fraternal_twin_bros
+
+>>> 20.0
+
+```
+
+The denominator/all possible pairs of brothers that could be identical twins is the sum of fraternal twins and identical twins.
+
+```python
+total_twin_bros = identical_twin_bros + fraternal_twin_bros
+
+total_twin_bros
+
+>>> 36.66666666666667
+
+```
+
+Therefore, the probability that any given pair of twins is an identical pair of twin brothers is the total number of twin brothers divided by all twin brothers.
+
+
+```python
+identical_twin_bros/total_twin_bros
+
+>>>0.45454545454545453
+```
+
+There is a 45% chance that Elvis had an identical twin.
 
 ---
 
 ### Q6. Bayesian &amp; Frequentist Comparison  
 How do frequentist and Bayesian statistics compare?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Both frequentist and Bayesian statistics utilize models and data to determine and measure the relationship between variables. 
+
+For example, linear regression can estimate the coefficients of a model that can predict the values of an outcome variable.
+
+A Bayesian model can use prior knowledge which can come from either a previous model or industry/domain knowledge and calculate the probability that those coefficients are within a specific range.
+
+Therefore, Bayesian statistical models use both prior knowledge and the data to determine the relationship between variables whereas frequentist statistics uses the data to determine the correlation.
+
+However, frequentist models can use industry/domain/prior knowledge to determine what variables to include in the model. 
 
 ---
 
