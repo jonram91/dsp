@@ -13,14 +13,14 @@ For quick and easy interactive practice with Python, many people enjoy [Codecade
 How are Python lists and tuples similar and different? Which will work as keys in dictionaries? Why?
 
 Similarities:
-*Both are iterable and you can loop through both of their elements
-*You can access specific elements by their index numbers
-*You can search for the index of a specific element in both
+* Both are iterable and you can loop through both of their elements
+* You can access specific elements by their index numbers
+* You can search for the index of a specific element in both
 
 Differences:
-*You cannot use lists as keys in dictionaries
-*Lists are mutable, but tuples are immutable
-*tuples are declared with "()", but lists are declared with "[]"
+* You cannot use lists as keys in dictionaries
+* Lists are mutable, but tuples are immutable
+* tuples are declared with "()", but lists are declared with "[]"
 ---
 
 ### Q2. Lists &amp; Sets
