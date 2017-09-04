@@ -16,11 +16,11 @@ def match_ends(words):
     1
     """
     count = 0
-    
+
     for s in words:
         if len(s) > 1 and s[0] == s[len(s)-1]:
             count += 1
-    
+
     return count
 
 
@@ -39,17 +39,17 @@ def front_x(words):
     ['xanadu', 'xyz', 'aardvark', 'apple', 'mix']
     """
     x_words = []
-    
+
     non_x_words = []
-    
+
     for word in words:
         if word[0] == 'x':
             x_words.append(word)
         else:
             non_x_words.append(word)
-            
+
     sorted_list = sorted(x_words) + sorted(non_x_words)
-    
+
     return sorted_list
 
 
@@ -69,21 +69,33 @@ def sort_last(tuples):
     [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
     """
     last_digits = []
-    
+
     result = []
-    
+
     for tup in tuples:
         last_digits.append(tup[len(tup)-1])
-        
+
     last_digits_sorted = sorted(last_digits)
-    
+
     last_digit_indeces = [last_digits.index(i) for i in last_digits_sorted]
 
-    
+
     for i in last_digit_indeces:
         result.append(tuples[i])
+
+
+    return result
+
+#However, there is another way of doing this.
+
+def sort_last(tuples):
     
-    
+    result = [(tup[1],tup) for tup in tuples]
+
+    result = sorted(result)
+
+    result = [tup[1] for tup in result]
+
     return result
 
 
@@ -105,20 +117,20 @@ def remove_adjacent(nums):
     []
     """
     delete = [False]
-    
+
     result = []
-    
+
     for i in range(1, len(nums)):
         if nums[i] == nums[i-1]:
             delete.append(True)
         else:
             delete.append(False)
-        
+
     for i in range(len(nums)):
-        
+
         if delete[i] == False:
             result.append(nums[i])
-    
+
     return result
 
 
